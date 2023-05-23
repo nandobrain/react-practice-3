@@ -1,24 +1,64 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import Task from "./Task";
-import Text from "./Text";
+// import Text from "./Text";
 import './App.css';
+import Axios from "axios";
 
 
 
 function App() {
-  const [showText, setShowText] = useState(false);
+  const [name, setName] = useState("")
 
+  function fetchData() {
+    Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
+      console.log(res.data)
+    });
+  }
   return (
-    <div clasNAme="App">
-      <button
-      onClick={() => {
-        setShowText(!showText);
-      }}
-      >
-        Show Text
-      </button>{showText && <Text />}
+    <div className="App">
+      <input placeHolder="Ex. Nando..." onChange={(event) => {setName(event.target.value)}}/>
+      <button onClick={fetchData}> Predict Age </button>
     </div>
   )
+
+
+
+
+
+
+  // const [catFact, setCatFact] = useState("");
+
+  // function fetchCatFact() {
+  //   Axios.get("https://catfact.ninja/fact").then((res) => {
+  //     setCatFact(res.data.fact);
+  // });
+
+  // }
+  // useEffect(() => {
+  //   fetchCatFact();
+  // }, []);
+
+
+  // return (
+  //   < div className="App">
+  //     <button onClick={fetchCatFact}> Generate Cat Fact </button>
+  //     <p> {catFact} </p>
+  //   </div>
+  // )
+
+  // const [showText, setShowText] = useState(false);
+
+  // return (
+  //   <div clasNAme="App">
+  //     <button
+  //     onClick={() => {
+  //       setShowText(!showText);
+  //     }}
+  //     >
+  //       Show Text
+  //     </button>{showText && <Text />}
+  //   </div>
+  // )
 
 
   // const [todoList, setTodoList] = useState([]);
