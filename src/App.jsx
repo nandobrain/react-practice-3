@@ -1,29 +1,32 @@
-// import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
 // import Task from "./Task";
 // import Text from "./Text";
 import './App.css';
 // import Axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom' 
 import  Home  from "./Pages/Home";
-import Menu from './Pages/Menu';
+import Profile from './Pages/Profile';
 import Contact from './Pages/Contact';
 import Navbar from './Pages/Navbar';
 
-
+export const AppContext = createContext();
 
 function App() {
+  const [username, setUsername] = useState("Nando");
 
   return (
     <div className="App"> 
+    <AppContext.Provider value={{ username, setUsername }}>
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/menu" element={<Menu />}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="/contact" element={<Contact />}/>
           <Route path="*" element={<h1>Page Not Found</h1>} />
         </Routes>
       </Router>
+    </AppContext.Provider>
     
     
     
