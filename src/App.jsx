@@ -1,29 +1,58 @@
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 // import Task from "./Task";
 // import Text from "./Text";
 import './App.css';
-import Axios from "axios";
+// import Axios from "axios";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom' 
+import  Home  from "./Pages/Home";
+import Menu from './Pages/Menu';
+import Contact from './Pages/Contact';
+import Navbar from './Pages/Navbar';
 
 
 
 function App() {
-  const [name, setName] = useState("");
-  const [predictedAge, setPredictedAge] = useState(null);
 
-  function fetchData() {
-    Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
-      setPredictedAge(res.data.age)
-    });
-  }
   return (
-    <div className="App">
-      <input placeHolder="Ex. Nando..." onChange={(event) => {setName(event.target.value)}}/>
-      <button onClick={fetchData}> Predict Age </button>
-      <h1>Name:{predictedAge?.name}</h1>
-      <h1>Predicted Age:{predictedAge?.age}</h1>
-      <h1>Count:{predictedAge?.count}</h1>
+    <div className="App"> 
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}/>
+          <Route path="/menu" element={<Menu />}/>
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="*" element={<h1>Page Not Found</h1>} />
+        </Routes>
+      </Router>
+    
+    
+    
+    
     </div>
-  )
+    
+    )
+
+
+
+
+
+  // const [name, setName] = useState("");
+  // const [predictedAge, setPredictedAge] = useState(null);
+
+  // function fetchData() {
+  //   Axios.get(`https://api.agify.io/?name=${name}`).then((res) => {
+  //     setPredictedAge(res.data.age)
+  //   });
+  // }
+  // return (
+  //   <div className="App">
+  //     <input placeHolder="Ex. Nando..." onChange={(event) => {setName(event.target.value)}}/>
+  //     <button onClick={fetchData}> Predict Age </button>
+  //     <h1>Name:{predictedAge?.name}</h1>
+  //     <h1>Predicted Age:{predictedAge?.age}</h1>
+  //     <h1>Count:{predictedAge?.count}</h1>
+  //   </div>
+  // )
 
 
 
