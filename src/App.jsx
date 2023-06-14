@@ -6,6 +6,7 @@ import  Home  from "./Pages/Home";
 import Profile from './Pages/Profile';
 import Contact from './Pages/Contact';
 import Navbar from './Pages/Navbar';
+import Form from "./Pages/Form";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
 
 
@@ -25,10 +26,11 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/Profile" element={<Profile />} />
+            {/* <Route path="/" element={<Home />} /> */}
+            <Route path="/form" element={<Form />} />
+            {/* <Route path="/Profile" element={<Profile />} />
             <Route path="/contact" element={<Contact />}/>
-            <Route path="*" element={<h1>Page Not Found</h1>} />
+            <Route path="*" element={<h1>Page Not Found</h1>} /> */}
           </Routes>
         </Router>
       </QueryClientProvider>
@@ -36,7 +38,7 @@ function App() {
     
     
     
-    
+     
     </div>
     
     )
